@@ -1,0 +1,42 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
+{
+	"name": "Existing Dockerfile",
+	"build": {
+		// Sets the run context to one level up instead of the .devcontainer folder.
+		"context": "..",
+		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"vallyscode.crayons",
+				"JackValley.astral-green",
+				"ms-azuretools.vscode-docker"
+			],
+			"remoteUser": "bob",
+			"postCreateCommand": "python3 --version"  // Verify Python installation
+		}
+	},
+    "remoteEnv": {
+        "OLLAMA_BASE_URL": "http://host.docker.internal:11434",
+		"USER_NAME": "bob",
+		"OLLAMA_HOST": "http://host.docker.internal:11434"
+    },
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Run commands after the container is created.
+	"postCreateCommand": "pip3 install -r requirements/requirements.txt"
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "devcontainer"
+}
